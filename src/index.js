@@ -6,6 +6,11 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
+// 🌍 Ruta raíz
+app.get("/", (req, res) => {
+  res.send("🚀 API de tareas corriendo en Render");
+});
+
 // ✅ Crear tarea
 app.post("/tasks", async (req, res) => {
   try {
@@ -56,5 +61,7 @@ app.delete("/tasks/:id", async (req, res) => {
   }
 });
 
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => console.log(`🚀 Servidor corriendo en puerto ${PORT}`));
+const PORT = process.env.PORT || 10000; // Render usa el puerto asignado
+app.listen(PORT, () =>
+  console.log(`🚀 Servidor corriendo en puerto ${PORT}`)
+);
